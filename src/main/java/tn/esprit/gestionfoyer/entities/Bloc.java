@@ -2,6 +2,9 @@ package tn.esprit.gestionfoyer.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -14,4 +17,12 @@ public class Bloc {
     long idBloc;
     String nomBloc;
     long capaciteBloc;
+
+    @ManyToOne()
+    private Foyer foyers;
+
+    @OneToMany(mappedBy = "blocs")
+    Set<Chambre> chambre;
+
+
 }

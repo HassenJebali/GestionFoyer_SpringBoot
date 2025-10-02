@@ -3,6 +3,8 @@ package tn.esprit.gestionfoyer.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -17,4 +19,12 @@ public class Chambre {
     long numeroChambre;
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
+
+    @ManyToOne()
+    Bloc blocs;
+
+    @OneToMany()
+    Set<Reservation> reservations;
+
+
 }

@@ -1,6 +1,8 @@
 package tn.esprit.gestionfoyer.entities;
 
 import java.util.Date;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -19,4 +21,7 @@ public class Etudiant {
     long cin ;
     String ecole;
     Date dateNaissance;
+
+    @ManyToMany(mappedBy = "etudiants")
+    Set<Reservation> reservations;
 }

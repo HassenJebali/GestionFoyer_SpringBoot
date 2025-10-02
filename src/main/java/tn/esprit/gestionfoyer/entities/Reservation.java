@@ -1,6 +1,9 @@
 package tn.esprit.gestionfoyer.entities;
 
-import java.sql.Date;import jakarta.persistence.*;
+import java.sql.Date;
+import java.util.Set;
+
+import jakarta.persistence.*;
 import lombok.*;
 @Entity
 @Getter
@@ -13,4 +16,7 @@ public class Reservation {
     String idReservation;
     Date anneeUniversitaire;
     boolean estValide;
+
+    @ManyToMany()
+    Set<Etudiant>  etudiants;
 }
