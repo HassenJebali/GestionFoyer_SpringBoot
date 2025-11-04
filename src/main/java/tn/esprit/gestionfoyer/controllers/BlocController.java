@@ -3,6 +3,7 @@ package tn.esprit.gestionfoyer.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.gestionfoyer.DTO.BlocDTO;
 import tn.esprit.gestionfoyer.entities.Bloc;
 import tn.esprit.gestionfoyer.services.BlocService;
 
@@ -39,4 +40,10 @@ public class BlocController {
     Bloc getBloc(@PathVariable("id") int idBloc) {
         return blocService.findBlocById(idBloc);
     }
+
+    @GetMapping("{id}")
+    public BlocDTO findBlocDTOById(@PathVariable("id") long idBloc) {
+        return blocService.findBlocDTOById(idBloc);
+    }
+
 }

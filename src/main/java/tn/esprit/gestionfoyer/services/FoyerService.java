@@ -3,7 +3,9 @@ package tn.esprit.gestionfoyer.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.gestionfoyer.DTO.FoyerDTO;
 import tn.esprit.gestionfoyer.entities.Foyer;
+import tn.esprit.gestionfoyer.mapper.FoyerMapper;
 import tn.esprit.gestionfoyer.repositories.FoyerRepository;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public class FoyerService implements IFoyer {
 
     final FoyerRepository foyerRepository;
+    private final FoyerMapper foyerMapper; //Injection du mapping automatique
 
     @Override
     public Foyer addOrUpdateFoyer(Foyer foyer) {
@@ -21,13 +24,16 @@ public class FoyerService implements IFoyer {
 
     @Override
     public void deleteFoyer(long id) {
-
-        foyerRepository.deleteById(id);
-    }
+        foyerRepository.deleteById(id);}
 
     @Override
     public List<Foyer> findAllFoyers() {
         return foyerRepository.findAll();
+    }
+
+    public FoyerDTO findById(long id) {
+        Foyer foyer = foyerRepository.findById(id).orElse(null);
+        return foyerMapper.foyerToDTO(foyer);
     }
 
     @Override

@@ -3,8 +3,8 @@ package tn.esprit.gestionfoyer.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.gestionfoyer.DTO.FoyerDTO;
 import tn.esprit.gestionfoyer.entities.Foyer;
-import tn.esprit.gestionfoyer.services.FoyerService;
 import tn.esprit.gestionfoyer.services.IFoyer;
 
 import java.util.List;
@@ -38,6 +38,11 @@ public class FoyerController {
 
     @GetMapping("/get/{id}")
     Foyer getFoyer(@PathVariable("id") int id) {
-        return foyerService.findFoyerById();
+        return foyerService.findFoyerById(id);
+    }
+
+    @GetMapping("{id}")
+    public FoyerDTO findById(@PathVariable("id") long id) {
+        return foyerService.findById(id);
     }
 }
