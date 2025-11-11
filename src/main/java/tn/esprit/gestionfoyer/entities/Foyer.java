@@ -1,8 +1,10 @@
 package tn.esprit.gestionfoyer.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,7 +22,10 @@ public class Foyer {
     @OneToOne(mappedBy = "foyer")
     Universite universite;
 
+    /*HashSet obligatoire*/
     @OneToMany(mappedBy = "foyers")
-    Set<Bloc> blocs;
+            @JsonIgnore
+            @ToString.Exclude
+    Set<Bloc> blocs = new HashSet<Bloc>();
 
 }

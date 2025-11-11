@@ -10,5 +10,8 @@ public interface IReservation {
     void deleteReservation(String IdReservation);
     List<Reservation> findAllReservations();
     Reservation findReservationById(String IdReservation);
+    Reservation addReservationAndChambre(Reservation reservation);
+    Reservation affectReservationToChambre(String idReservation, Long idChambre);
+    Reservation desaffectReservationToChambre(String idReservation, Long idChambre);
 
 }

@@ -46,4 +46,26 @@ public class BlocController {
         return blocService.findBlocDTOById(idBloc);
     }
 
+    @PostMapping("/addBlocFoyer")
+    Bloc addBlocFoyer(@RequestBody Bloc bloc) {
+        return blocService.addBlocAndFoyer(bloc);
+    }
+
+    @PutMapping("/assignBF/{idBloc}/{idFoyer}")
+    public Bloc affectBlocToFoyer(@PathVariable long idBloc,
+                                  @PathVariable long idFoyer){
+        return blocService.affectBlocToFoyer(idBloc, idFoyer);}
+
+    @PutMapping("/desBF/{idBloc}")
+    public Bloc desAffectBlocToFoyer(@PathVariable long idBloc){
+        return blocService.desAffectBlocToFoyer(idBloc);
+    }
+
+    @PutMapping("/desfBF/{idBloc}/{idFoyer}")
+    public Bloc desAffectBlocToFoyers(long idBloc, long idFoyer){
+        return blocService.desAffectBlocToFoyers(idBloc, idFoyer);
+    }
+
+
+
 }

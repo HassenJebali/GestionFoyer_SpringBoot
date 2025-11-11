@@ -1,8 +1,10 @@
 package tn.esprit.gestionfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,8 +25,10 @@ public class Chambre {
     @ManyToOne()
     Bloc blocs;
 
-    @OneToMany()
-    Set<Reservation> reservations;
+    @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
+            @JsonIgnore
+            @ToString.Exclude
+    Set<Reservation> reservations = new HashSet<Reservation>();
 
 
 }

@@ -36,6 +36,10 @@ public class FoyerService implements IFoyer {
         return foyerMapper.foyerToDTO(foyer);
     }
 
+    public FoyerDTO addFoyerDTO(Foyer foyer) {
+        return foyerMapper.foyerToDTO(foyerRepository.save(foyer));
+    }
+
     @Override
     public Foyer findFoyerById(long id) {
         return foyerRepository.findById(id).get();

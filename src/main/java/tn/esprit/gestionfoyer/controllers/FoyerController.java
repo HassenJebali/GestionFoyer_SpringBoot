@@ -45,4 +45,9 @@ public class FoyerController {
     public FoyerDTO findById(@PathVariable("id") long id) {
         return foyerService.findById(id);
     }
+
+    @PostMapping("addDTO")
+    FoyerDTO addFoyerDTO(@RequestBody Foyer foyer) {
+        return foyerService.addFoyerDTO(foyer);
+    }
 }

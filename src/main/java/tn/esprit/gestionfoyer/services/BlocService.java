@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.gestionfoyer.DTO.BlocDTO;
 import tn.esprit.gestionfoyer.entities.Bloc;
+import tn.esprit.gestionfoyer.entities.Foyer;
 import tn.esprit.gestionfoyer.repositories.BlocRepository;
+import tn.esprit.gestionfoyer.repositories.FoyerRepository;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class BlocService implements IBloc {
 
     final BlocRepository blocRepository;
+    final FoyerRepository foyerRepository;
 
     @Override
     public Bloc addOrUpdateBloc(Bloc bloc) {
@@ -34,7 +37,6 @@ public class BlocService implements IBloc {
         return blocRepository.findById(id).get();
     }
 
-
     public BlocDTO findBlocDTOById(long id) {
         Bloc bloc = blocRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Bloc not found"));
@@ -43,7 +45,45 @@ public class BlocService implements IBloc {
     private BlocDTO convertToDTO(Bloc bloc) {
         BlocDTO dto = new BlocDTO();
         dto.setNom(bloc.getNomBloc());
-        dto.setNom(bloc.getNomBloc());
+        dto.setCapacite(bloc.getCapaciteBloc());
         return dto;
     }
+
+    @Override
+    public Bloc addBlocAndFoyer(Bloc bloc) {
+        if(bloc.getFoyers() != null){
+            Foyer foyer = bloc.getFoyers();
+            foyer.getBlocs().add(bloc);
+            foyerRepository.save(foyer);
+        }
+    return blocRepository.save(bloc);}
+
+    @Override
+    public Bloc affectBlocToFoyer(long idBloc, long idFoyer) {
+        Bloc bloc = blocRepository.findById(idBloc).get();
+        Foyer foyer = foyerRepository.findById(idFoyer).get();
+        bloc.setFoyers(foyer);
+        foyer.getBlocs().add(bloc);
+        return blocRepository.save(bloc);
+    }
+
+    @Override
+    public Bloc desAffectBlocToFoyer(long idBloc) {
+        Bloc bloc = blocRepository.findById(idBloc).get();
+        bloc.setFoyers(null);
+        return blocRepository.save(bloc);
+    }
+
+    @Override
+    public Bloc desAffectBlocToFoyers(long idBloc, long idFoyer){
+        Bloc bloc = blocRepository.findById(idBloc).get();
+        Foyer foyer = foyerRepository.findById(idFoyer).get();
+        // 1. Casser la relation En mémoire
+        foyer.getBlocs().remove(bloc);
+        // 2. Casser la relation En base (clé étrangère)
+        bloc.setFoyers(null);
+        return blocRepository.save(bloc);
+    }
+
+
 }

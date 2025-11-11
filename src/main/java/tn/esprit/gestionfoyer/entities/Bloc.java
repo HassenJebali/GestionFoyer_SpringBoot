@@ -22,7 +22,7 @@ public class Bloc {
     private Foyer foyers;
 
     @OneToMany(mappedBy = "blocs")
-    Set<Chambre> chambre;
+    Set<Chambre> chambre ;
 
 
 }

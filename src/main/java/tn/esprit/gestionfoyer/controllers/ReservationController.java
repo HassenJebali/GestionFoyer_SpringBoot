@@ -38,4 +38,22 @@ public class ReservationController {
     Reservation getReservation(@PathVariable("id") String idR) {
         return reservationService.findReservationById(idR);
     }
+
+    @PostMapping("/addRC")
+    public Reservation addReservationAndChambre(@RequestBody Reservation reservation){
+        return reservationService.addReservationAndChambre(reservation);
+    }
+
+    @PutMapping("/assignRC/{idReservation}/{idChambre}")
+    public Reservation affectReservationToChambre(@PathVariable String idReservation,
+                                                  @PathVariable Long idChambre){
+        return reservationService.affectReservationToChambre(idReservation, idChambre);
+    }
+
+
+    @PutMapping("/des/{idR}/{idC}")
+    public Reservation desaffectReservationToChambre(@PathVariable String idR,
+                                                     @PathVariable long idC){
+        return reservationService.desaffectReservationToChambre(idR, idC);
+    }
 }

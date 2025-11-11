@@ -16,5 +16,6 @@ public interface IFoyer {
     Foyer findFoyerById(long id);
 
     FoyerDTO findById(long id);
+    public FoyerDTO addFoyerDTO(Foyer foyer);
 
 }
