@@ -62,8 +62,20 @@ public class BlocController {
     }
 
     @PutMapping("/desfBF/{idBloc}/{idFoyer}")
-    public Bloc desAffectBlocToFoyers(long idBloc, long idFoyer){
+    public Bloc desAffectBlocToFoyers(@PathVariable long idBloc,
+                                      @PathVariable long idFoyer){
         return blocService.desAffectBlocToFoyers(idBloc, idFoyer);
+    }
+
+    @GetMapping("/fByNx/{N}/{x}")
+    List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(@PathVariable String N,
+                                                                   @PathVariable long x){
+        return blocService.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(N, x);
+    }
+
+    @GetMapping("/fByN/{N}")
+    List<Bloc> findByNomBlocStartingWith(@PathVariable String N){
+        return blocService.findByNomBlocStartingWith(N);
     }
 
 

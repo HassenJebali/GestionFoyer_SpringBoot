@@ -85,5 +85,13 @@ public class BlocService implements IBloc {
         return blocRepository.save(bloc);
     }
 
+    public List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(String N, long x){
+        return blocRepository.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(N, x);
+    }
+
+    public List<Bloc> findByNomBlocStartingWith(String N){
+        return blocRepository.findByNomBlocStartingWith(N);
+    }
+
 
 }
