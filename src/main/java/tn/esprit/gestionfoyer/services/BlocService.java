@@ -85,6 +85,14 @@ public class BlocService implements IBloc {
         return blocRepository.save(bloc);
     }
 
+    public List<Bloc> getBlocsNonAffectes() {
+        return blocRepository.findByfoyersIsNull();
+    }
+
+    public List<Bloc> getBlocByCapaciteBlocGreaterThan30() {
+        return blocRepository.getBlocBycapaciteBlocGreaterThan(30);
+    }
+
     public List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(String N, long x){
         return blocRepository.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(N, x);
     }

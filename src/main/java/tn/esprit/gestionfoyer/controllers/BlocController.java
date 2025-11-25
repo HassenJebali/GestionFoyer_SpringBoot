@@ -73,6 +73,16 @@ public class BlocController {
         return blocService.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(N, x);
     }
 
+   @GetMapping("/non-affectes")
+    public List<Bloc> blocsNonAffectes() {
+        return blocService.getBlocsNonAffectes();
+    }
+
+    @GetMapping("/capacite30")
+    public List<Bloc> blocsCapPlus30() {
+        return blocService.getBlocByCapaciteBlocGreaterThan30();
+    }
+
     @GetMapping("/fByN/{N}")
     List<Bloc> findByNomBlocStartingWith(@PathVariable String N){
         return blocService.findByNomBlocStartingWith(N);

@@ -4,6 +4,7 @@ package tn.esprit.gestionfoyer.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.gestionfoyer.entities.Chambre;
+import tn.esprit.gestionfoyer.entities.TypeChambre;
 import tn.esprit.gestionfoyer.services.ChambreService;
 
 import java.util.List;
@@ -38,4 +39,15 @@ public class ChambreController {
     Chambre getChambre(@PathVariable int id) {
         return chambreService.findChambreById(id);
     }
+
+    @GetMapping("/type/{type}")
+    public List<Chambre> getByType(@PathVariable TypeChambre type) {
+        return chambreService.getChambresByType(type);
+    }
+
+    @GetMapping("/numero/{num}")
+    public Chambre getByNumero(@PathVariable long num) {
+        return chambreService.getChambreByNumero(num);
+    }
+
 }
