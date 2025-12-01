@@ -2,12 +2,15 @@ package tn.esprit.gestionfoyer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableScheduling
 @SpringBootApplication
 public class GestionFoyerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GestionFoyerApplication.class, args);
+
     }
 
 }

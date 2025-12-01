@@ -23,7 +23,7 @@ public class Chambre {
     TypeChambre typeChambre;
 
     @ManyToOne()
-    Bloc blocs;
+    private Bloc blocs;
 
     @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
             @JsonIgnore
