@@ -34,6 +34,11 @@ public class ChambreService implements IChambre {
         return chambreRepository.findById(id).get();
     }
 
+    @Override
+    public Chambre findByEtudiant(long idEtudiant) {
+        return chambreRepository.findByEtudiant(idEtudiant);
+    }
+
     public List<Chambre> getChambresByType(TypeChambre type) {
         return chambreRepository.findByTypeChambre(type);
     }
@@ -41,5 +46,7 @@ public class ChambreService implements IChambre {
     public Chambre getChambreByNumero(long numero) {
         return chambreRepository.findByNumeroChambre(numero);
     }
+
+
 
 }

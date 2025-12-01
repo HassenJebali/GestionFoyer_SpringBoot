@@ -50,4 +50,9 @@ public class ChambreController {
         return chambreService.getChambreByNumero(num);
     }
 
+    @GetMapping("/QS/{idEtudiant}")
+    public Chambre findByEtudiant(@PathVariable long idEtudiant){
+        return chambreService.findByEtudiant(idEtudiant);
+    }
+
 }
