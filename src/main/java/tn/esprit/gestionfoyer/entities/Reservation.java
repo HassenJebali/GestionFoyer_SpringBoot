@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -21,8 +22,12 @@ public class Reservation {
 
 
     @ManyToOne()
+        @JsonIgnore
+        @ToString.Exclude
     Chambre chambre;
 
     @ManyToMany()
+        @JsonIgnore
+        @ToString.Exclude
     Set<Etudiant>  etudiants = new HashSet<Etudiant>();
 }

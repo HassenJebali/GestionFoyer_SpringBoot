@@ -23,6 +23,8 @@ public class Chambre {
     TypeChambre typeChambre;
 
     @ManyToOne()
+        @JsonIgnore
+        @ToString.Exclude
     private Bloc blocs;
 
     @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)

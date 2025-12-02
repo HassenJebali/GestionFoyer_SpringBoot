@@ -17,7 +17,7 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
 
     @Query("select c from Chambre c join c.reservations r " +
             "join r.etudiants e " +
-            "where e.idEtudiant  =: id_e")
+            "where e.idEtudiant  =:id_e")
     Chambre findByEtudiant(@Param("id_e") long idEtudiant);
 
     List<Chambre> findByBlocsIdBloc(Long idBloc);

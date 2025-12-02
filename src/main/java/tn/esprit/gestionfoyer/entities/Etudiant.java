@@ -3,6 +3,7 @@ package tn.esprit.gestionfoyer.entities;
 import java.util.Date;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -23,5 +24,7 @@ public class Etudiant {
     Date dateNaissance;
 
     @ManyToMany(mappedBy = "etudiants")
+        @JsonIgnore
+        @ToString.Exclude
     Set<Reservation> reservations;
 }
