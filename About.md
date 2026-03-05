@@ -2,7 +2,7 @@
 
 Ce projet a été développé comme **portfolio académique** et 
 démontre les compétences suivantes:
-- Architecture microservices RESTful
+- Architecture services RESTful
 - Persistance de données JPA/Hibernate
 - Design patterns (Service, Repository, DTO, Mapper)
 - Documentation technique complète
