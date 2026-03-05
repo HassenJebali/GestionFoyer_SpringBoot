@@ -115,7 +115,7 @@ Le projet couvre toutes les couches d'une application REST moderne : entités JP
 - ✅ Configuration avec `@EnableAspectJAutoProxy`
 
 ### 12. **Documentation API**
-- ✅ Intégration de Swagger/OpenAPI
+- ✅ Intégration de Swagger/API REST
 - ✅ Documentation automatique des endpoints
 - ✅ Interface web interactive
 
